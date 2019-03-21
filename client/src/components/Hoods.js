@@ -22,7 +22,7 @@ export default class Hoods extends Component {
     }
     toggleAddForm = () => {
         this.setState((state, props) => {
-            return ({ isCreatureFormDisplayed: !state.isCreatureFormDisplayed })
+            return ({ isAddFormDisp: !state.isAddFormDisp })
         })
     }
 
@@ -31,7 +31,7 @@ export default class Hoods extends Component {
         const hoods = this.state.hoods.map(hood => {
             return (
                 <div key={hood._id}>
-                    <Link to={`/${hood._id}`}>{hood.name}</Link>
+                    <Link to={`/hoods/${hood._id}`}>{hood.name}</Link>
                 </div>
             )
         })
