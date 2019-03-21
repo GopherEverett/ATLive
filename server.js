@@ -7,7 +7,7 @@ const router = require('./routes/index')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static(`${__dirname}/client/build`))
-app.use('api/ATLive/', router)
+app.use('api/v1/', router)
 
 app.get('/*', (req, res) => {
     res.sendFile(`${__dirname}/client/build/index.html`)

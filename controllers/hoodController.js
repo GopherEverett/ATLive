@@ -10,7 +10,7 @@ const hoodController = {
     },
     create: (req, res) => {
         console.log(req.body)
-        Hood.create({ name: "test"})
+        Hood.create(req.body)
         .then(hood => {
             res.json(hood)
         }).catch((err) => {
