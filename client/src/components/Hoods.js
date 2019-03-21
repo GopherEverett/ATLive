@@ -7,31 +7,55 @@ export default class Hoods extends Component {
 
     state = {
         hoods: [],
-        // newHood: {
-        //     name: '',
-        //     venues: []
-        // }
+        newHood: {
+            name: '',
+            venues: []
+        },
+        isAddFormDisp: false,
     }
 
     componentDidMount = () => {
-        axios.get('/api/v1/')
-        .then(res => {
-            this.setState({ hoods: res.data })
-            console.log(res.data)
+        axios.get('/api/ATLive/hoods')
+            .then(res => {
+                this.setState({ hoods: res.data })
+            })
+    }
+    toggleAddForm = () => {
+        this.setState((state, props) => {
+            return ({ isCreatureFormDisplayed: !state.isCreatureFormDisplayed })
         })
     }
 
+
     render() {
+        const hoods = this.state.hoods.map(hood => {
+            return (
+                <div key={hood._id}>
+                    <Link to={`/${hood._id}`}>{hood.name}</Link>
+                </div>
+            )
+        })
+
         return (
             <div>
                 <h1>Neighborhoods</h1>
-                {/* {this.state.hoods.map(hood => {
-                    return (
-                        <div key={hood._id}>
-                            <Link to={`/${hood._id}`}>{hood.name}</Link>
+                {hoods}
+                <button onClick={this.toggleAddForm}>Add New Neighborhood</button>
+                {this.state.isAddFormDisp
+                    ? <form onSubmit={this.createHood}>
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <input
+                                id='name'
+                                type='text'
+                                onChange={this.handleChange}
+                                value={this.state.newHood.name}
+                            />
                         </div>
-                    )
-                })} */}
+                        <button>Create</button>
+                    </form>
+                    : null
+                }
             </div>
         )
     }
