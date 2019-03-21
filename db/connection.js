@@ -6,7 +6,7 @@ if (process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI);
 }
 else {
-    mongoose.connect('mongodb://localhost/ATLive');
+    mongoose.connect('mongodb://localhost:27017/ATLive');
 }
 mongoose.connection.on('error', function (err) {
     console.error(`MongoDB connection error: ${err}`);

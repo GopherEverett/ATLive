@@ -1,5 +1,6 @@
+
 const Hood = require('../models/Hood')
-const Venue = require('../models/Hood')
+const Venue = require('../models/Venue')
 
 Hood.deleteMany()
     .then(() => {
@@ -21,7 +22,7 @@ Hood.deleteMany()
         }).then(ven => {
             mid.venues.push(ven)
         })
-        const venue2Promise = Roast.create({
+        const venue2Promise = Venue.create({
             name: 'Apache Cafe',
             address: '64 3rd St NW',
             website: 'https://apachecafe.info/',

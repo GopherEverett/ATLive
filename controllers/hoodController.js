@@ -6,7 +6,13 @@ const hoodController = {
         }).catch((err) => {
             console.log(err)
         })
-    }
+    },
+    create: (req,res) => {
+
+    },
+    show: (req,res) => {
+        
+    } 
 }
 
 module.exports = hoodController
