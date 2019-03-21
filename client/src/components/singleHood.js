@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-export default class singleHood extends Component {
+export default class SingleHood extends Component {
 
     state = {
         hood: {
@@ -14,7 +14,6 @@ export default class singleHood extends Component {
     componentDidMount = () => {
         axios.get(`/api/ATLive/hoods/${this.props.match.params.hoodId}`)
             .then(res => {
-                console.log(res.data)
                 this.setState({ hood: res.data })
             })
     }
