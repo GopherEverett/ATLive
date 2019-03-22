@@ -16,6 +16,9 @@ const venueController = {
                         hood.venues.push(venue)
                         hood.save()
                     })
+                    .then(hood => {
+                        res.json(hood)
+                    })
             })
     },
     update: (req, res) => {
