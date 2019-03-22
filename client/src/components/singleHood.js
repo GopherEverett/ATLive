@@ -18,11 +18,15 @@ export default class SingleHood extends Component {
             imgLink: ''
         },
         isAddFormDisp: false,
-   
+
 
     }
 
     componentDidMount = () => {
+        this.getAllVenues()
+    }
+
+    getAllVenues = () => {
         axios.get(`/api/ATLive/hoods/${this.props.match.params.hoodId}`)
             .then(res => {
                 this.setState({ hood: res.data })
@@ -37,26 +41,19 @@ export default class SingleHood extends Component {
 
     createVenue = (evt) => {
         evt.preventDefault()
-        axios.post(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/`, {
+        const payload = {
             name: this.state.newVenue.name,
             address: this.state.newVenue.address,
             website: this.state.newVenue.website,
             phone: this.state.newVenue.phone,
-        }).then(res => {
-            console.log(res)
+        }
+        axios.post(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/`, payload).then(res => {
             const venueList = [...this.state.hood.venues]
-            venueList.unshift(res.data)
+            venueList.push(payload)
             this.setState({
                 isAddFormDisp: false,
-                newVenue: {
-                    name: '',
-                    address: '',
-                    website: '',
-                    phone: ''
-                },
-                hood: {
-                    venues:[venueList]
-                },
+                hood: { venues: venueList },
+                newVenue: { name: '', address: '', website: '', phone: '' }
             })
         })
     }
@@ -68,7 +65,7 @@ export default class SingleHood extends Component {
     }
 
     render() {
-        
+
         const venues = this.state.hood.venues.map(venue => {
             return (
                 <div key={venue._id}>
