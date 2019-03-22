@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import ButtonStyle from './styledComponents/ButtonStyle'
 
 
 export default class Hoods extends Component {
@@ -25,22 +26,28 @@ export default class Hoods extends Component {
             return ({ isAddFormDisp: !state.isAddFormDisp })
         })
     }
+    handleChange = (evt) => {
+        const copyNewHood = { ...this.state.newHood }
+        copyNewHood[evt.target.name] = evt.target.value
+        this.setState({ newHood: copyNewHood })
+    } 
+
 
 
     render() {
         const hoods = this.state.hoods.map(hood => {
             return (
                 <div key={hood._id}>
-                    <Link to={`/hoods/${hood._id}`}>{hood.name}</Link>
+                    <h2><Link to={`/hoods/${hood._id}`}>{hood.name}</Link></h2>
                 </div>
             )
         })
-
+        
         return (
             <div>
                 <h1>Neighborhoods</h1>
                 {hoods}
-                <button onClick={this.toggleAddForm}>Add New Neighborhood</button>
+                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
                 {this.state.isAddFormDisp
                     ? <form onSubmit={this.createHood}>
                         <div>
@@ -52,7 +59,7 @@ export default class Hoods extends Component {
                                 value={this.state.newHood.name}
                             />
                         </div>
-                        <button>Create</button>
+                        <ButtonStyle>Create</ButtonStyle>
                     </form>
                     : null
                 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import ButtonStyle from './styledComponents/ButtonStyle'
 
 export default class SingleVenue extends Component {
     state = {
@@ -23,9 +24,23 @@ export default class SingleVenue extends Component {
     }
 
     render() {
+
         return (
             <div>
-                <h1>Venue</h1>
+                <div>
+                    <h2>{this.state.venue.name}</h2>
+                </div>
+                <div>
+                    <h2>{this.state.venue.address}</h2>
+                </div>
+                <div>
+                    <h2>{this.state.venue.website}</h2>
+                </div>
+                <div>
+                    <h2>{this.state.venue.phone}</h2>
+                </div>
+                <ButtonStyle>DELETE</ButtonStyle>
+                <ButtonStyle>EDIT</ButtonStyle>
             </div>
         )
     }
