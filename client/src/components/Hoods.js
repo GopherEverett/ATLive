@@ -30,7 +30,26 @@ export default class Hoods extends Component {
         const copyNewHood = { ...this.state.newHood }
         copyNewHood[evt.target.name] = evt.target.value
         this.setState({ newHood: copyNewHood })
-    } 
+    }
+
+    createHood = (evt) => {
+        evt.preventDefault()
+        axios.post('/api/ATLive/hoods', {
+            name: this.state.newHood.name,
+        }).then(res => {
+            const hoodList = [...this.state.hoods]
+            hoodList.unshift(res.data)
+            this.setState({
+                newHood: {
+                    name: ''
+                },
+                isAddFormDisp: false,
+                hoods: hoodList
+            })
+        })
+    }
+
+
 
 
 
@@ -42,18 +61,19 @@ export default class Hoods extends Component {
                 </div>
             )
         })
-        
+
         return (
             <div>
                 <h1>Neighborhoods</h1>
-                {hoods}
                 <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
+                {hoods}
                 {this.state.isAddFormDisp
                     ? <form onSubmit={this.createHood}>
                         <div>
                             <label htmlFor="name">Name</label>
                             <input
                                 id='name'
+                                name='name'
                                 type='text'
                                 onChange={this.handleChange}
                                 value={this.state.newHood.name}

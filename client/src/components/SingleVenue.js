@@ -23,6 +23,13 @@ export default class SingleVenue extends Component {
             })
     }
 
+    handleDelete = () => {
+        axios.delete(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/${this.props.match.params.venueId}`)
+        .then(res => {
+            this.setState({ redirectToHome: true })
+        })
+    }
+
     render() {
 
         return (
@@ -39,7 +46,7 @@ export default class SingleVenue extends Component {
                 <div>
                     <h2>{this.state.venue.phone}</h2>
                 </div>
-                <ButtonStyle>DELETE</ButtonStyle>
+                <ButtonStyle onClick={this.handleDelete}>DELETE</ButtonStyle>
                 <ButtonStyle>EDIT</ButtonStyle>
             </div>
         )
