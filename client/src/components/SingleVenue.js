@@ -32,7 +32,7 @@ export default class SingleVenue extends Component {
             })
     }
 
-    toggleAddForm = () => {
+    toggleEditForm = () => {
         this.setState((state, props) => {
             return ({ isEditFormDisp: !state.isEditFormDisp })
         })
@@ -42,20 +42,22 @@ export default class SingleVenue extends Component {
     handleChange = (evt) => {
         const copyVenue = { ...this.state.venue }
         copyVenue[evt.target.name] = evt.target.value
-        this.setState({ newVenue: copyVenue })
+        this.setState({ venue: copyVenue })
     }
 
     updateVenue = (evt) => {
         evt.preventDefault()
         axios
-        .put(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/${this.props.match.params.venueId}`, {
-            name: this.state.venue.name,
-            description: this.state.creature.description
-        })
-        .then(res => {
-            this.setState({venue: res.data, isEditFormDisp: false})
-        })
-  }
+            .put(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/${this.props.match.params.venueId}`, {
+                name: this.state.venue.name,
+                address: this.state.venue.address,
+                website: this.state.venue.website,
+                phone: this.state.venue.phone
+            })
+            .then(res => {
+                this.setState({ venue: res.data, isEditFormDisp: false })
+            })
+    }
 
     render() {
         if (this.state.reDirHome) {
@@ -110,13 +112,12 @@ export default class SingleVenue extends Component {
                                 value={this.state.venue.phone}
                             />
                         </div>
-                       
                         <ButtonStyle>UPDATE</ButtonStyle>
                     </form>
                     :
                     <div>
                         <ButtonStyle onClick={this.handleDelete}>DELETE</ButtonStyle>
-                        <ButtonStyle>EDIT</ButtonStyle>
+                        <ButtonStyle onClick={this.toggleEditForm}>EDIT</ButtonStyle>
                     </div>
                 }
             </div>
