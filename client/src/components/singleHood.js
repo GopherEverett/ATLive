@@ -1,7 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import ButtonStyle from './styledComponents/ButtonStyle'
+
+const HoodContent = styled.div`
+text-align: center;
+text-shadow: 2px 2px 2px gray;
+p {
+color: orange;
+font-size: 3rem;
+}
+.hoodLink {
+    font-size: 2rem;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+`
 
 export default class SingleHood extends Component {
 
@@ -68,19 +82,19 @@ export default class SingleHood extends Component {
         const venues = this.state.hood.venues.map(venue => {
             return (
                 <div key={venue._id}>
-                    <h2><Link 
+                    <p className='hoodLink'><Link 
                     to={`/hoods/${this.props.match.params.hoodId}/venues/${venue._id}`}
-                    style={{ textDecoration: 'none' }}>
+                    style={{ textDecoration: 'none', color: 'white' }}>
                     {venue.name}
-                    </Link></h2>
+                    </Link></p>
                 </div>
             )
         })
         return (
-            <div>
-                <h1>Venues in {this.state.hood.name}</h1>
-                <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
+            <HoodContent>
+                <p>Venues in {this.state.hood.name}</p>
                 {venues}
+                <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
                 {this.state.isAddFormDisp
                     ? <form onSubmit={this.createVenue}>
                         <div>
@@ -137,7 +151,7 @@ export default class SingleHood extends Component {
                     </form>
                     : null
                 }
-            </div>
+            </HoodContent>
         )
     }
 }

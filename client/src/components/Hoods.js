@@ -4,7 +4,17 @@ import { Link } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
 import styled from 'styled-components'
 
-
+const HoodContent = styled.div`
+text-align: center;
+p {
+color: orange;
+font-size: 3rem;
+}
+.hoodLink {
+    font-size: 2rem;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+`
 export default class Hoods extends Component {
 
     state = {
@@ -58,16 +68,16 @@ export default class Hoods extends Component {
         const hoods = this.state.hoods.map(hood => {
             return (
                 <div key={hood._id}>
-                    <h2><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none' }}>{hood.name}</Link></h2>
+                    <p className='hoodLink'><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none', color: 'white' }}>{hood.name}</Link></p>
                 </div>
             )
         })
 
         return (
-            <div>
-                <h1>Neighborhoods</h1>
-                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
+            <HoodContent>
+                <p>Neighborhoods</p>
                 {hoods}
+                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
                 {this.state.isAddFormDisp
                     ? <form onSubmit={this.createHood}>
                         <div>
@@ -84,7 +94,7 @@ export default class Hoods extends Component {
                     </form>
                     : null
                 }
-            </div>
+            </HoodContent>
         )
     }
 }

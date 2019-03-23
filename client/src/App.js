@@ -6,17 +6,19 @@ import Banner from './components/styledComponents/Banner'
 import SingleHood from './components/SingleHood'
 import SingleVenue from './components/SingleVenue'
 import logo from './images/apple-icon-76x76.png'
-import img from './images/audio-band-black-and-white-9137.jpg'
+import img from './images/acoustic-acoustic-guitar-blur-808353.jpg'
 
 const Box = styled.div`
 background: rgba(24, 27, 25, 0.5);
-max-width: 600px;
-margin: 20px auto;
-border: 1px solid rgba(24, 27, 25, 0.9);
+max-width: 100vw;
+margin: 70px 0;
+border-top: 1px solid #f2833a;
+border-bottom: 1px solid #f2833a;
 color: white;
 display: flex;
 justify-content: center;
 align-content: center;
+
 `
 const Body = styled.div`
 background-image: url(${img});
@@ -34,7 +36,7 @@ class App extends Component {
       <Body>
         <Banner>
           <p>ATLive</p>
-          <p>Atlanta's live music scene</p>
+          <p className='atlInfo'>Atlanta's live music scene</p>
           <Link to={'/hoods'}><img src={logo} alt="Logo" /></Link>
         </Banner>
         <Box>
