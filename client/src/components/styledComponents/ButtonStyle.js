@@ -8,6 +8,7 @@ const ButtomPrimary = styled.button`
   font-size: 18px;
   border: 1px solid darkgray;
   border-radius: 5px;
+  margin: 5px;
 `
 
 export default ButtomPrimary

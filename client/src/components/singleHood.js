@@ -68,7 +68,11 @@ export default class SingleHood extends Component {
         const venues = this.state.hood.venues.map(venue => {
             return (
                 <div key={venue._id}>
-                    <h2><Link to={`/hoods/${this.props.match.params.hoodId}/venues/${venue._id}`}>{venue.name}</Link></h2>
+                    <h2><Link 
+                    to={`/hoods/${this.props.match.params.hoodId}/venues/${venue._id}`}
+                    style={{ textDecoration: 'none' }}>
+                    {venue.name}
+                    </Link></h2>
                 </div>
             )
         })

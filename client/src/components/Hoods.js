@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
+import styled from 'styled-components'
 
 
 export default class Hoods extends Component {
@@ -57,7 +58,7 @@ export default class Hoods extends Component {
         const hoods = this.state.hoods.map(hood => {
             return (
                 <div key={hood._id}>
-                    <h2><Link to={`/hoods/${hood._id}`}>{hood.name}</Link></h2>
+                    <h2><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none' }}>{hood.name}</Link></h2>
                 </div>
             )
         })
