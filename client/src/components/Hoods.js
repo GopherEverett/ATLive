@@ -11,13 +11,14 @@ padding: 10px;
 p {
 color: orange;
 font-size: 3rem;
-font-family: 'Rock Salt', cursive;
+font-family: 'Maven Pro', cursive;
 }
 .hoodLink {
     font-size: 2rem;
     text-shadow: 2px 2px 8px #FF0000;
 }
 `
+
 export default class Hoods extends Component {
 
     state = {
@@ -62,7 +63,7 @@ export default class Hoods extends Component {
             })
         })
     }
-    
+
     render() {
         const hoods = this.state.hoods.map(hood => {
             return (
@@ -79,21 +80,17 @@ export default class Hoods extends Component {
                 <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
                 {this.state.isAddFormDisp
                     ?
-                    <Form>
-                        <form onSubmit={this.createHood}>
+                        <Form onSubmit={this.createHood}>
                             <div>
                                 <label htmlFor="name">Name</label>
                                 <input
-                                    id='name'
-                                    name='name'
-                                    type='text'
+                                    id='name' name='name' type='text'
                                     onChange={this.handleChange}
                                     value={this.state.newHood.name}
                                 />
                             </div>
                             <ButtonStyle>Create</ButtonStyle>
-                        </form>
-                    </Form>
+                        </Form>
                     : null
                 }
             </HoodContent>

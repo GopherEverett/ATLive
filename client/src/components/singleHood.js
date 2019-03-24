@@ -12,7 +12,7 @@ padding: 10px;
 p {
     color: orange;
     font-size: 3rem;
-    font-family: 
+    font-family: 'Maven Pro', cursive;
 }
 .hoodLink {
     font-size: 2rem;
@@ -100,8 +100,7 @@ export default class SingleHood extends Component {
                 <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
                 {this.state.isAddFormDisp
                     ?
-                    <Form>
-                        <form onSubmit={this.createVenue}>
+                        <Form onSubmit={this.createVenue}>
                             <label htmlFor="name">Name</label>
                             <input
                                 id='name'
@@ -145,8 +144,7 @@ export default class SingleHood extends Component {
                             />
                         </div> */}
                             <ButtonStyle>Create</ButtonStyle>
-                        </form>
-                    </Form>
+                        </Form>
                     : null
                 }
             </HoodContent>

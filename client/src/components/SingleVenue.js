@@ -3,10 +3,26 @@ import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
 import Form from './styledComponents/Form'
+import styled from 'styled-components'
+
+const VenueContent = styled.div`
+text-align: center;
+text-shadow: 2px 2px 2px gray;
+padding: 10px;
+p {
+    color: orange;
+    font-size: 3rem;
+    font-family: 'Maven Pro', cursive;
+}
+@media (max-width: 50em) {
+    p{
+    font-size: 2rem;
+    }
+}
+`
 
 export default class SingleVenue extends Component {
     state = {
-
         venue: {
             name: '',
             address: '',
@@ -16,7 +32,6 @@ export default class SingleVenue extends Component {
         },
         reDirHome: false,
         isEditFormDisp: false,
-
     }
 
     componentDidMount = () => {
@@ -65,15 +80,14 @@ export default class SingleVenue extends Component {
             return (<Redirect to={`/hoods/${this.props.match.params.hoodId}`} />)
         }
         return (
-            <div>
-                <div><h2>{this.state.venue.name}</h2></div>
-                <div><h2>{this.state.venue.address}</h2></div>
-                <div><h2>{this.state.venue.website}</h2></div>
-                <div><h2>{this.state.venue.phone}</h2></div>
+            <VenueContent>
+                <p>{this.state.venue.name}</p>
+                <p>{this.state.venue.address}</p>
+                <p>{this.state.venue.website}</p>
+                <p>{this.state.venue.phone}</p>
                 {this.state.isEditFormDisp
                     ?
-                    <Form>
-                        <form onSubmit={this.updateVenue}>
+                        <Form onSubmit={this.updateVenue}>
                             <div>
                                 <label htmlFor="name">Name</label>
                                 <input
@@ -115,15 +129,14 @@ export default class SingleVenue extends Component {
                                 />
                             </div>
                             <ButtonStyle>UPDATE</ButtonStyle>
-                        </form>
-                    </Form>
+                        </Form>
                     :
                     <div>
                         <ButtonStyle onClick={this.handleDelete}>DELETE</ButtonStyle>
                         <ButtonStyle onClick={this.toggleEditForm}>EDIT</ButtonStyle>
                     </div>
                 }
-            </div>
+            </VenueContent>
 
         )
     }

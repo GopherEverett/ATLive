@@ -23,7 +23,7 @@ img{
 @media (max-width: 50em) {
   .atlInfo {
   display: none;
-  }
-  }
+    }
+}
 `
 export default Banner

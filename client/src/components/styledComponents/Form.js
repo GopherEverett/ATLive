@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
-const Form = styled.div`
+const Form = styled.form`
 font-size: 1.5rem;
 color: orange;
 
 input {
-  width: 200px;
+  width: 100px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -16,8 +16,8 @@ input {
   display: block;
   margin: 0 auto;
 }
-input :focus {
-    width: 100%;
+input:focus {
+    width: 400px;
   }
 `
 export default Form
