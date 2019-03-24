@@ -113,7 +113,7 @@ export default class SingleVenue extends Component {
                                 <input
                                     id='website'
                                     name='website'
-                                    type='text'
+                                    type='url'
                                     onChange={this.handleChange}
                                     value={this.state.venue.website}
                                 />

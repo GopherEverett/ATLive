@@ -67,22 +67,10 @@ export default class SingleHood extends Component {
             .then(() => {
                 this.setState({
                     isAddFormDisp: false
-                    // hood: { venues: venueList },
-                    // newVenue: { name: '', address: '', website: '', phone: '' }
-                    // })
-                    //     .then(() => {
                     })
                 })
                 .then(res => {
                     this.componentDidMount()
-        //     console.log(res)
-        //     const venueList = [...this.state.hood.venues]
-        //     venueList.push(payload)
-        // this.setState({
-        //     isAddFormDisp: false,
-        //     hood: { venues: venueList },
-        //     newVenue: { name: '', address: '', website: '', phone: '' }
-        // })
         })
     }
 
@@ -133,7 +121,7 @@ export default class SingleHood extends Component {
                         <input
                             id='website'
                             name='website'
-                            type='text'
+                            type='url'
                             onChange={this.handleChange}
                             value={this.state.newVenue.website}
                         />
