@@ -3,13 +3,16 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import ButtonStyle from './styledComponents/ButtonStyle'
+import Form from './styledComponents/Form'
 
 const HoodContent = styled.div`
 text-align: center;
 text-shadow: 2px 2px 2px gray;
+padding: 10px;
 p {
-color: orange;
-font-size: 3rem;
+    color: orange;
+    font-size: 3rem;
+    font-family: 
 }
 .hoodLink {
     font-size: 2rem;
@@ -82,10 +85,10 @@ export default class SingleHood extends Component {
         const venues = this.state.hood.venues.map(venue => {
             return (
                 <div key={venue._id}>
-                    <p className='hoodLink'><Link 
-                    to={`/hoods/${this.props.match.params.hoodId}/venues/${venue._id}`}
-                    style={{ textDecoration: 'none', color: 'white' }}>
-                    {venue.name}
+                    <p className='hoodLink'><Link
+                        to={`/hoods/${this.props.match.params.hoodId}/venues/${venue._id}`}
+                        style={{ textDecoration: 'none', color: 'white' }}>
+                        {venue.name}
                     </Link></p>
                 </div>
             )
@@ -96,8 +99,9 @@ export default class SingleHood extends Component {
                 {venues}
                 <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
                 {this.state.isAddFormDisp
-                    ? <form onSubmit={this.createVenue}>
-                        <div>
+                    ?
+                    <Form>
+                        <form onSubmit={this.createVenue}>
                             <label htmlFor="name">Name</label>
                             <input
                                 id='name'
@@ -106,8 +110,6 @@ export default class SingleHood extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.newVenue.name}
                             />
-                        </div>
-                        <div>
                             <label htmlFor="address">Address</label>
                             <input
                                 id='address'
@@ -116,8 +118,6 @@ export default class SingleHood extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.newVenue.address}
                             />
-                        </div>
-                        <div>
                             <label htmlFor="website">Website</label>
                             <input
                                 id='website'
@@ -126,8 +126,6 @@ export default class SingleHood extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.newVenue.website}
                             />
-                        </div>
-                        <div>
                             <label htmlFor="phone">Phone</label>
                             <input
                                 id='phone'
@@ -136,8 +134,7 @@ export default class SingleHood extends Component {
                                 onChange={this.handleChange}
                                 value={this.state.newVenue.phone}
                             />
-                        </div>
-                        {/* <div>
+                            {/* <div>
                             <label htmlFor="name">Name</label>
                             <input
                                 id='name'
@@ -147,8 +144,9 @@ export default class SingleHood extends Component {
                                 value={this.state.newVenue.name}
                             />
                         </div> */}
-                        <ButtonStyle>Create</ButtonStyle>
-                    </form>
+                            <ButtonStyle>Create</ButtonStyle>
+                        </form>
+                    </Form>
                     : null
                 }
             </HoodContent>

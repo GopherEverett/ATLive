@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
+import Form from './styledComponents/Form'
 import styled from 'styled-components'
 
 const HoodContent = styled.div`
 text-align: center;
+padding: 10px;
 p {
 color: orange;
 font-size: 3rem;
+font-family: 'Rock Salt', cursive;
 }
 .hoodLink {
     font-size: 2rem;
@@ -59,11 +62,7 @@ export default class Hoods extends Component {
             })
         })
     }
-
-
-
-
-
+    
     render() {
         const hoods = this.state.hoods.map(hood => {
             return (
@@ -79,19 +78,22 @@ export default class Hoods extends Component {
                 {hoods}
                 <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
                 {this.state.isAddFormDisp
-                    ? <form onSubmit={this.createHood}>
-                        <div>
-                            <label htmlFor="name">Name</label>
-                            <input
-                                id='name'
-                                name='name'
-                                type='text'
-                                onChange={this.handleChange}
-                                value={this.state.newHood.name}
-                            />
-                        </div>
-                        <ButtonStyle>Create</ButtonStyle>
-                    </form>
+                    ?
+                    <Form>
+                        <form onSubmit={this.createHood}>
+                            <div>
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    id='name'
+                                    name='name'
+                                    type='text'
+                                    onChange={this.handleChange}
+                                    value={this.state.newHood.name}
+                                />
+                            </div>
+                            <ButtonStyle>Create</ButtonStyle>
+                        </form>
+                    </Form>
                     : null
                 }
             </HoodContent>

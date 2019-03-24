@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
+import Form from './styledComponents/Form'
 
 export default class SingleVenue extends Component {
     state = {
@@ -71,49 +72,51 @@ export default class SingleVenue extends Component {
                 <div><h2>{this.state.venue.phone}</h2></div>
                 {this.state.isEditFormDisp
                     ?
-                    <form onSubmit={this.updateVenue}>
-                        <div>
-                            <label htmlFor="name">Name</label>
-                            <input
-                                id='name'
-                                name='name'
-                                type='text'
-                                onChange={this.handleChange}
-                                value={this.state.venue.name}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="address">Address</label>
-                            <input
-                                id='address'
-                                name='address'
-                                type='text'
-                                onChange={this.handleChange}
-                                value={this.state.venue.address}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="website">Website</label>
-                            <input
-                                id='website'
-                                name='website'
-                                type='text'
-                                onChange={this.handleChange}
-                                value={this.state.venue.website}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="phone">Phone</label>
-                            <input
-                                id='phone'
-                                name='phone'
-                                type='text'
-                                onChange={this.handleChange}
-                                value={this.state.venue.phone}
-                            />
-                        </div>
-                        <ButtonStyle>UPDATE</ButtonStyle>
-                    </form>
+                    <Form>
+                        <form onSubmit={this.updateVenue}>
+                            <div>
+                                <label htmlFor="name">Name</label>
+                                <input
+                                    id='name'
+                                    name='name'
+                                    type='text'
+                                    onChange={this.handleChange}
+                                    value={this.state.venue.name}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="address">Address</label>
+                                <input
+                                    id='address'
+                                    name='address'
+                                    type='text'
+                                    onChange={this.handleChange}
+                                    value={this.state.venue.address}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="website">Website</label>
+                                <input
+                                    id='website'
+                                    name='website'
+                                    type='text'
+                                    onChange={this.handleChange}
+                                    value={this.state.venue.website}
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="phone">Phone</label>
+                                <input
+                                    id='phone'
+                                    name='phone'
+                                    type='text'
+                                    onChange={this.handleChange}
+                                    value={this.state.venue.phone}
+                                />
+                            </div>
+                            <ButtonStyle>UPDATE</ButtonStyle>
+                        </form>
+                    </Form>
                     :
                     <div>
                         <ButtonStyle onClick={this.handleDelete}>DELETE</ButtonStyle>
