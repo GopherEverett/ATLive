@@ -14,6 +14,7 @@ font-size: 3rem;
 font-family: 'Maven Pro', cursive;
 }
 .hoodLink {
+    margin: 15px 15px;
     font-size: 2rem;
     text-shadow: 2px 2px 8px #FF0000;
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, Redirect } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Hoods from './components/Hoods'
 import Banner from './components/styledComponents/Banner'
 import SingleVenue from './components/SingleVenue.js'
 import SingleHood from './components/SingleHood.js'
+import Login from './components/Login.js'
 import logo from './images/apple-icon-76x76.png'
 import img from './images/acoustic-acoustic-guitar-blur-808353.jpg'
 
@@ -31,21 +32,32 @@ display; flex;
 align-content: center;
 `
 class App extends Component {
+
+state = {
+  peachIconShow: true
+}
+
   render() {
     return (
       <Body>
+
         <Banner>
           <p>ATLive</p>
           <p className='atlInfo'>Atlanta's live music scene</p>
+          { this.state.peachIconShow ?
           <Link to={'/hoods'}><img src={logo} alt="Logo" /></Link>
+          : null
+          }
         </Banner>
         <Box>
           <Switch>
+            <Route exact path='/' component={Login} />
             <Route exact path='/hoods' component={Hoods} />
             <Route exact path='/hoods/:hoodId' component={SingleHood} />
             <Route exact path='/hoods/:hoodId/venues/:venueId' component={SingleVenue} />
           </Switch>
         </Box>
+
       </Body>
     );
   }

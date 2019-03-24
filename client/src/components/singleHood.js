@@ -14,7 +14,8 @@ p {
     font-size: 3rem;
     font-family: 'Maven Pro', cursive;
 }
-.hoodLink {
+.venueLink {
+    margin: 15px 15px;
     font-size: 2rem;
     text-shadow: 2px 2px 8px #FF0000;
 }
@@ -85,7 +86,7 @@ export default class SingleHood extends Component {
         const venues = this.state.hood.venues.map(venue => {
             return (
                 <div key={venue._id}>
-                    <p className='hoodLink'><Link
+                    <p className='venueLink'><Link
                         to={`/hoods/${this.props.match.params.hoodId}/venues/${venue._id}`}
                         style={{ textDecoration: 'none', color: 'white' }}>
                         {venue.name}
