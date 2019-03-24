@@ -15,9 +15,12 @@ const venueController = {
                     .then(venue => {
                         hood.venues.push(venue)
                         hood.save()
-                    })
-                    .then(hood => {
                         res.json(hood)
+                    })
+                    // .then(hood => {
+                    // })
+                    .catch((err) => {
+                        console.log(err)
                     })
             })
     },

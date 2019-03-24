@@ -83,7 +83,7 @@ export default class SingleVenue extends Component {
             <VenueContent>
                 <p>{this.state.venue.name}</p>
                 <p>{this.state.venue.address}</p>
-                <p>{this.state.venue.website}</p>
+                <a href={this.state.venue.website}><p>{this.state.venue.website}</p></a>
                 <p>{this.state.venue.phone}</p>
                 {this.state.isEditFormDisp
                     ?
