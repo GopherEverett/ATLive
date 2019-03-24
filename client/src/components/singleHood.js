@@ -12,7 +12,7 @@ padding: 10px;
 p {
     color: orange;
     font-size: 3rem;
-    font-family: 'Maven Pro', cursive;
+    font-family: 'Crushed', cursive;
 }
 .venueLink {
     margin: 15px 15px;

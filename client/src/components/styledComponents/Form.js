@@ -9,12 +9,12 @@ input {
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
-  padding: 5px 5px 5px 5px;
+  font-size: 24px;
+  padding: 5px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
   display: block;
-  margin: 0 auto;
+  margin: 5px auto;
 }
 input:focus {
     width: 400px;

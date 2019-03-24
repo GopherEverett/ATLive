@@ -11,7 +11,8 @@ padding: 10px;
 p {
 color: orange;
 font-size: 3rem;
-font-family: 'Maven Pro', cursive;
+font-family: 'Crushed', cursive;
+text-shadow: 2px 2px 8px gray;
 }
 .hoodLink {
     margin: 15px 15px;

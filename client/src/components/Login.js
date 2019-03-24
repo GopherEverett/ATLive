@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import ButtonStyle from './styledComponents/ButtonStyle'
 import { Redirect } from 'react-router-dom'
+import ButtonStyle from './styledComponents/ButtonStyle'
 import Form from './styledComponents/Form'
+import styled from 'styled-components'
+
+const LoginBox = styled.div`
+text-align: center;
+margin 100px 0;
+`
 
 export default class Login extends Component {
 
@@ -31,27 +37,23 @@ export default class Login extends Component {
             return (<Redirect to="/hoods" />)
         }
         return (
-            <div className="Login">
-                    <Form onSubmit={this.handleSubmit}>
-                        <div>
-                            <label htmlFor="email">Email</label>
-                            <input
-                                id='email' name='email' type='email'
-                                onChange={this.handleChange}
-                                value={this.state.email}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="name">Name</label>
-                            <input
-                                id='password' name='password' type='password'
-                                onChange={this.handleChange}
-                                value={this.state.password}
-                            />
-                        </div>
-                        <ButtonStyle>Login</ButtonStyle>
-                    </Form>
-            </div>
+            <LoginBox>
+                <Form onSubmit={this.handleSubmit}>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        id='email' name='email' type='email'
+                        onChange={this.handleChange}
+                        value={this.state.email}
+                    />
+                    <label htmlFor="name">Name</label>
+                    <input
+                        id='password' name='password' type='password'
+                        onChange={this.handleChange}
+                        value={this.state.password}
+                    />
+                    <ButtonStyle>Login</ButtonStyle>
+                </Form>
+            </LoginBox>
         );
     }
 }
