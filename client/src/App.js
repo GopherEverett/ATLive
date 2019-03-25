@@ -54,7 +54,7 @@ class App extends Component {
         </BannerStyle>
         <Box>
           <Switch>
-            <Route exact path='/' render={props => <Login handleIsUser={this.handleIsUser} />} />
+            <Route exact path='/' render={() => <Login handleIsUser={this.handleIsUser} />} />
             <Route exact path='/hoods' component={Hoods} />
             <Route exact path='/hoods/:hoodId' component={SingleHood} />
             <Route exact path='/hoods/:hoodId/venues/:venueId' component={SingleVenue} />

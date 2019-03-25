@@ -9,6 +9,9 @@ const ButtonStyle = styled.button`
   border: 1px solid black;
   border-radius: 5px;
   margin: 8px;
+  :focus {
+    outline:0;
+  }
 `
 
 export default ButtonStyle

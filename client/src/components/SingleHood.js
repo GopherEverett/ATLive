@@ -14,9 +14,6 @@ p {
     font-size: 3.5rem;
     font-family: 'Crushed', cursive;
 }
-// input:focus {
-//     width: 400px;
-//   }
 .venueLink {
     margin: 15px 15px;
     font-size: 2.5rem;
