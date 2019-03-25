@@ -70,7 +70,7 @@ export default class Hoods extends Component {
         const hoods = this.state.hoods.map(hood => {
             return (
                 <div key={hood._id}>
-                    <p className='hoodLink'><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none', color: 'white' }}>{hood.name}</Link></p>
+                    <p className='hoodLink'><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none', color: 'white'}}>{hood.name}</Link></p>
                 </div>
             )
         })
