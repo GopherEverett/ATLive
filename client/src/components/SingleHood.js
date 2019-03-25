@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import ButtonStyle from './styledComponents/ButtonStyle'
 import Form from './styledComponents/Form'
@@ -36,6 +36,7 @@ export default class SingleHood extends Component {
             imgLink: ''
         },
         isAddFormDisp: false,
+        reDirHome: false,
 
     }
 
@@ -68,11 +69,18 @@ export default class SingleHood extends Component {
             .then(() => {
                 this.setState({
                     isAddFormDisp: false
-                    })
                 })
-                .then(res => {
-                    this.componentDidMount()
-        })
+            })
+            .then(res => {
+                this.componentDidMount()
+            })
+    }
+
+    handleDelete = () => {
+        axios.delete(`/api/ATLive/hoods/${this.props.match.params.hoodId}`)
+            .then(res => {
+                this.setState({ reDirHome: true })
+            })
     }
 
     toggleAddForm = () => {
@@ -82,7 +90,9 @@ export default class SingleHood extends Component {
     }
 
     render() {
-
+        if (this.state.reDirHome) {
+            return (<Redirect to={`/hoods/`} />)
+        }
         const venues = this.state.hood.venues.map(venue => {
             return (
                 <div key={venue._id}>
@@ -99,6 +109,7 @@ export default class SingleHood extends Component {
                 <p>Venues in {this.state.hood.name}</p>
                 {venues}
                 <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
+                <ButtonStyle onClick={this.handleDelete}>Delete Neighborhood</ButtonStyle>
                 {this.state.isAddFormDisp
                     ?
                     <Form onSubmit={this.createVenue}>

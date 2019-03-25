@@ -6,6 +6,7 @@ const venueController = require('../controllers/venueController')
 router.get('/hoods', hoodController.index)
 router.post('/hoods/', hoodController.create)
 router.get('/hoods/:hoodId', hoodController.show)
+router.delete('/hoods/:hoodId', hoodController.delete)
 
 router.get('/hoods/:hoodId/venues/:venueId', venueController.show)
 router.post('/hoods/:hoodId/venues/' , venueController.create)

@@ -14,7 +14,7 @@ export default class Login extends Component {
     state = {
         email: "",
         password: "",
-        reDirectHoods: false
+        reDirectHoods: false,
     }
 
     validateForm() {

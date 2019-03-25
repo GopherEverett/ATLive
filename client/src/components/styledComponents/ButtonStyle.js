@@ -6,7 +6,7 @@ const ButtomPrimary = styled.button`
   background-color: black;
   color: white;
   font-size: 18px;
-  border: 1px solid darkgray;
+  border: 1px solid black;
   border-radius: 5px;
   margin: 5px;
 `

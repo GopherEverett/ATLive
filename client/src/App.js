@@ -29,13 +29,14 @@ background-repeat: no-repeat;
 background-size: cover;
 background-attachment: fixed;
 height: 150vh;
+width: 100vw;
 display; flex;
 align-content: center;
 `
 class App extends Component {
 
 state = {
-  peachIconShow: true
+  isUser: false
 }
 
   render() {
@@ -45,10 +46,10 @@ state = {
         <Banner>
           <p>ATLive</p>
           <p className='atlInfo'>Atlanta's live music scene</p>
-          { this.state.peachIconShow ?
+          {/* { this.state.isUser ? */}
           <Link to={'/hoods'}><img src={logo} alt="Logo" /></Link>
-          : null
-          }
+          {/* : null
+          } */}
         </Banner>
         <Box>
           <Switch>
