@@ -10,13 +10,13 @@ text-align: center;
 text-shadow: 2px 2px 2px gray;
 padding: 10px;
 p {
-    color: orange;
-    font-size: 3rem;
+    color: #f97a02;
+    font-size: 3.5rem;
     font-family: 'Crushed', cursive;
 }
 .venueLink {
     margin: 15px 15px;
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-shadow: 2px 2px 8px #FF0000;
 }
 `

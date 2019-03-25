@@ -81,6 +81,7 @@ export default class SingleVenue extends Component {
         }
         return (
             <VenueContent>
+                {/* <img src={} */}
                 <p>{this.state.venue.name}</p>
                 <p>{this.state.venue.address}</p>
                 <a href={this.state.venue.website}><p>{this.state.venue.website}</p></a>
