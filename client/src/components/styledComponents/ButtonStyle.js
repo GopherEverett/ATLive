@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const ButtomPrimary = styled.button`
+const ButtonStyle = styled.button`
   height: 50px;
   width: 150px;
   background-color: black;
@@ -8,7 +8,7 @@ const ButtomPrimary = styled.button`
   font-size: 18px;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 5px;
+  margin: 8px;
 `
 
-export default ButtomPrimary
+export default ButtonStyle

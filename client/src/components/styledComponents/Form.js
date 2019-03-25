@@ -5,7 +5,8 @@ font-size: 1.5rem;
 color: orange;
 
 input {
-  width: 100px;
+text-align: center;
+  width: 150px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;

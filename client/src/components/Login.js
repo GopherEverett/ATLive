@@ -30,6 +30,8 @@ export default class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({ reDirectHoods: true })
+        console.log(this.props.handleIsUser)
+        this.props.handleIsUser()
     }
 
     render() {

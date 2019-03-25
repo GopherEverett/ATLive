@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Banner = styled.div`
+const BannerStyle = styled.div`
 color: orange;
 display: flex;
 justify-content: space-between;
@@ -26,4 +26,4 @@ img{
     }
 }
 `
-export default Banner
+export default BannerStyle

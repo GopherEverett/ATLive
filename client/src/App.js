@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Hoods from './components/Hoods'
-import Banner from './components/styledComponents/Banner'
+import logo from './images/apple-icon-76x76.png'
+import BannerStyle from './components/styledComponents/BannerStyle'
 import SingleVenue from './components/SingleVenue.js'
 import SingleHood from './components/SingleHood.js'
 import Login from './components/Login.js'
-import logo from './images/apple-icon-76x76.png'
 import img from './images/acoustic-acoustic-guitar-blur-808353.jpg'
 
 const Box = styled.div`
@@ -15,7 +15,6 @@ max-width: 100vw;
 margin: 70px 0;
 // border-top: 1px solid #f2833a;
 // border-bottom: 1px solid #f2833a;
-// box-shadow: 0 0 2px 2px #f2833a;
 color: white;
 display: flex;
 justify-content: center;
@@ -35,31 +34,32 @@ align-content: center;
 `
 class App extends Component {
 
-state = {
-  isUser: false
-}
+  state = {
+    isUser: false
+  }
+
+  handleIsUser = () => {
+    this.setState(({ isUser: true }))
+  }
 
   render() {
     return (
       <Body>
-
-        <Banner>
+        <BannerStyle>
           <p>ATLive</p>
           <p className='atlInfo'>Atlanta's live music scene</p>
-          {/* { this.state.isUser ? */}
-          <Link to={'/hoods'}><img src={logo} alt="Logo" /></Link>
-          {/* : null
-          } */}
-        </Banner>
+          {this.state.isUser ? <Link to={'/hoods'}><img src={logo} alt="Logo" /></Link> :
+          <img src={logo} alt="Logo" />
+          }
+        </BannerStyle>
         <Box>
           <Switch>
-            <Route exact path='/' component={Login} />
+            <Route exact path='/' render={props => <Login handleIsUser={this.handleIsUser} />} />
             <Route exact path='/hoods' component={Hoods} />
             <Route exact path='/hoods/:hoodId' component={SingleHood} />
             <Route exact path='/hoods/:hoodId/venues/:venueId' component={SingleVenue} />
           </Switch>
         </Box>
-
       </Body>
     );
   }

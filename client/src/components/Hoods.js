@@ -5,6 +5,7 @@ import ButtonStyle from './styledComponents/ButtonStyle'
 import Form from './styledComponents/Form'
 import styled from 'styled-components'
 
+
 const HoodContent = styled.div`
 text-align: center;
 padding: 10px;
@@ -70,18 +71,18 @@ export default class Hoods extends Component {
         const hoods = this.state.hoods.map(hood => {
             return (
                 <div key={hood._id}>
-                    <p className='hoodLink'><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none', color: 'white'}}>{hood.name}</Link></p>
+                    <p className='hoodLink'><Link to={`/hoods/${hood._id}`} style={{ textDecoration: 'none', color: 'white' }}>{hood.name}</Link></p>
                 </div>
             )
         })
 
         return (
-            <HoodContent>
-                <p>Neighborhoods</p>
-                {hoods}
-                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
-                {this.state.isAddFormDisp
-                    ?
+                <HoodContent>
+                    <p>Neighborhoods</p>
+                    {hoods}
+                    <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
+                    {this.state.isAddFormDisp
+                        ?
                         <Form onSubmit={this.createHood}>
                             <div>
                                 <label htmlFor="name">Name</label>
@@ -93,9 +94,9 @@ export default class Hoods extends Component {
                             </div>
                             <ButtonStyle>Create</ButtonStyle>
                         </Form>
-                    : null
-                }
-            </HoodContent>
+                        : null
+                    }
+                </HoodContent>
         )
     }
 }

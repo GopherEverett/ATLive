@@ -14,10 +14,17 @@ p {
     font-size: 3.5rem;
     font-family: 'Crushed', cursive;
 }
+// input:focus {
+//     width: 400px;
+//   }
 .venueLink {
     margin: 15px 15px;
     font-size: 2.5rem;
     text-shadow: 2px 2px 8px #FF0000;
+}
+.buttons {
+    display: flex;
+    justify-content: space-around;
 }
 `
 
@@ -108,8 +115,10 @@ export default class SingleHood extends Component {
             <HoodContent>
                 <p>Venues in {this.state.hood.name}</p>
                 {venues}
-                <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
-                <ButtonStyle onClick={this.handleDelete}>Delete Neighborhood</ButtonStyle>
+                <div className='buttons'>
+                    <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
+                    <ButtonStyle onClick={this.handleDelete}>Delete Neighborhood</ButtonStyle>
+                </div>
                 {this.state.isAddFormDisp
                     ?
                     <Form onSubmit={this.createVenue}>

@@ -18,6 +18,7 @@ p {
     p{
     font-size: 2rem;
     }
+
 }
 `
 
