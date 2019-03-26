@@ -7,7 +7,7 @@ ATLive is an online application that allows a user to choose from neighborhoods 
 
 ## Links
 
-- Live site on [Heroku](https://atlive.herokuapp.com/hoods)
+- Live site on [Heroku](https://atlive.herokuapp.com)
 
 - [Trello board](https://trello.com/b/FmioLcji/project-3-atlive) 
 
@@ -20,7 +20,7 @@ ATLive is an online application that allows a user to choose from neighborhoods 
 ### Features
 
 - See all neighborhoods in Atlanta
-- See individual neighborhoods and a listing of lve music venues in that neighborhood
+- See individual neighborhoods and a listing of live music venues in that neighborhood
 - Add a new neighborhood
 - Add a new music venue in a neighborhood
 - Edit the information about a venue
