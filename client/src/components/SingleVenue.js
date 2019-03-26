@@ -4,11 +4,16 @@ import { Redirect } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
 import Form from './styledComponents/Form'
 import styled from 'styled-components'
+// import { GoogleApiWrapper } from 'google-maps-react';
+import MapContainer from './Map.js'
+
 
 const VenueContent = styled.div`
 text-align: center;
 text-shadow: 2px 2px 2px gray;
-padding: 10px;
+// padding: 10px;
+// display: flex;
+
 p {
     color: orange;
     font-size: 3rem;
@@ -21,8 +26,14 @@ p {
 
 }
 `
+const MapContainerContainer = styled.div`
+    margin-left: -100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
 
-export default class SingleVenue extends Component {
+class SingleVenue extends Component {
     state = {
         venue: {
             name: '',
@@ -81,6 +92,8 @@ export default class SingleVenue extends Component {
             return (<Redirect to={`/hoods/${this.props.match.params.hoodId}`} />)
         }
         return (
+
+
             <VenueContent>
                 <p>{this.state.venue.name}</p>
                 <p>{this.state.venue.address}</p>
@@ -88,57 +101,67 @@ export default class SingleVenue extends Component {
                 <p>{this.state.venue.phone}</p>
                 {this.state.isEditFormDisp
                     ?
-                        <Form onSubmit={this.updateVenue}>
-                            <div>
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    id='name'
-                                    name='name'
-                                    type='text'
-                                    onChange={this.handleChange}
-                                    value={this.state.venue.name}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="address">Address</label>
-                                <input
-                                    id='address'
-                                    name='address'
-                                    type='text'
-                                    onChange={this.handleChange}
-                                    value={this.state.venue.address}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="website">Website</label>
-                                <input
-                                    id='website'
-                                    name='website'
-                                    type='url'
-                                    onChange={this.handleChange}
-                                    value={this.state.venue.website}
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor="phone">Phone</label>
-                                <input
-                                    id='phone'
-                                    name='phone'
-                                    type='text'
-                                    onChange={this.handleChange}
-                                    value={this.state.venue.phone}
-                                />
-                            </div>
-                            <ButtonStyle>UPDATE</ButtonStyle>
-                        </Form>
+                    <Form onSubmit={this.updateVenue}>
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <input
+                                id='name'
+                                name='name'
+                                type='text'
+                                onChange={this.handleChange}
+                                value={this.state.venue.name}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="address">Address</label>
+                            <input
+                                id='address'
+                                name='address'
+                                type='text'
+                                onChange={this.handleChange}
+                                value={this.state.venue.address}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="website">Website</label>
+                            <input
+                                id='website'
+                                name='website'
+                                type='url'
+                                onChange={this.handleChange}
+                                value={this.state.venue.website}
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="phone">Phone</label>
+                            <input
+                                id='phone'
+                                name='phone'
+                                type='text'
+                                onChange={this.handleChange}
+                                value={this.state.venue.phone}
+                            />
+                        </div>
+                        <ButtonStyle>UPDATE</ButtonStyle>
+                    </Form>
                     :
                     <div>
                         <ButtonStyle onClick={this.handleDelete}>DELETE</ButtonStyle>
                         <ButtonStyle onClick={this.toggleEditForm}>EDIT</ButtonStyle>
                     </div>
                 }
+                {!this.state.isEditFormDisp ?
+                <MapContainerContainer>
+                    <MapContainer/>
+                </MapContainerContainer>
+                    : null}
             </VenueContent>
-
         )
     }
 }
+
+export default SingleVenue
+
+// export default GoogleApiWrapper({
+//     apiKey: ('AIzaSyA-G5uqUKbbLDZWR1GAf5-FjUaAZb-xgkc')
+// })(SingleVenue)

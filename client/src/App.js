@@ -12,7 +12,7 @@ import img from './images/acoustic-acoustic-guitar-blur-808353.jpg'
 const Box = styled.div`
 background: rgba(24, 27, 25, 0.5);
 max-width: 100vw;
-margin: 70px 0;
+margin: 30px 0;
 // border-top: 1px solid #f2833a;
 // border-bottom: 1px solid #f2833a;
 color: white;
