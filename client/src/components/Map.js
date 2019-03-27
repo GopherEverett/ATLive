@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
+import Geocode from "react-geocode";
+
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY
-// console.log(GOOGLE_MAP_API_KEY)
+
+Geocode.setApiKey(GOOGLE_MAP_API_KEY)
 
 const style = {
     width: '100vw',
@@ -11,29 +14,49 @@ const style = {
     left: '0'
 }
 
-class MapContainer extends Component {
 
+
+class MapContainer extends Component {
+    
     state = {
         markerGo: false,
         currentLocation: {
-            // lat: 0,
-            // lng: 0
+            lat: 33.757053,
+            lng: -84.410121
         }
     }
-
+    
+    toggleMarkerGo = () => {
+        this.setState(({ markerGo: true }))
+    }
+    
+    onMarkerClick = () => {
+        console.log(this.props)
+        Geocode.fromAddress(this.props.venue)
+        .then(response => { this.setState({
+                    markerGo: false,
+                    currentLocation: {
+                        lat: response.results[0].geometry.location.lat,
+                        lng: response.results[0].geometry.location.lng
+                    }
+                })
+                this.toggleMarkerGo()
+            },
+            error => {
+                console.error(error);
+            })
+    }
+    
     componentDidMount = () => {
+        //get location of user if browser allows
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                console.log(position.coords)
                 this.setState({
                     currentLocation: {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     }
                 })
-            })
-            this.setState({
-                markerGo: true
             })
         }
         else {
@@ -47,26 +70,27 @@ class MapContainer extends Component {
             );
         }
     }
-    render() {
-        console.log(this.state.currentLocation)
-        return (
 
-            <Map google={this.props.google}
-                style={style}
-                center={this.state.currentLocation}
-                zoom={15}>
-                {this.state.markerGo ?
-                    <Marker onClick={this.onMarkerClick}
-                        postion={this.state.currentLocation}
-                        name={'Current location'}>
-                        {console.log(this.state.currentLocation)}
-                    </Marker>
+   
 
-                    : null
-                }
-            </Map>
-        );
-    }
+render() {
+    return (
+
+        <Map google={this.props.google}
+            style={style}
+            center={this.state.currentLocation}
+            onClick={this.toggleMarkerGo}
+            zoom={15}>
+            {this.state.markerGo ?
+                <Marker onClick={this.onMarkerClick}
+                    postion={this.state.currentLocation}
+                    name={'Current location'}>
+                </Marker>
+                : null
+            }
+        </Map>
+    );
+}
 }
 export default GoogleApiWrapper({
     apiKey: (GOOGLE_MAP_API_KEY)

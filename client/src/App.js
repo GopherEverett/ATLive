@@ -46,7 +46,7 @@ class App extends Component {
     return (
       <Body>
         <BannerStyle>
-          <p>ATLive</p>
+          <Link to={'/'} style={{ textDecoration: 'none', color: 'orange' }}><p>ATLive</p></Link>
           <p className='atlInfo'>Atlanta's live music scene</p>
           {this.state.isUser ? <Link to={'/hoods'}><img src={logo} alt="Logo" /></Link> :
           <img src={logo} alt="Logo" />

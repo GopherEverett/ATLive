@@ -91,8 +91,6 @@ class SingleVenue extends Component {
             return (<Redirect to={`/hoods/${this.props.match.params.hoodId}`} />)
         }
         return (
-
-
             <VenueContent>
                 <p>{this.state.venue.name}</p>
                 <p>{this.state.venue.address}</p>
@@ -151,7 +149,7 @@ class SingleVenue extends Component {
                 }
                 {!this.state.isEditFormDisp ?
                     <MapContainerContainer>
-                        <MapContainer />
+                        <MapContainer venue={this.state.venue.address}/>
                     </MapContainerContainer>
                     : null}
             </VenueContent>
