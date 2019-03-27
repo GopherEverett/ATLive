@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom'
 import ButtonStyle from './styledComponents/ButtonStyle'
 import Form from './styledComponents/Form'
 import styled from 'styled-components'
-// import { GoogleApiWrapper } from 'google-maps-react';
 import MapContainer from './Map.js'
 
 
@@ -50,7 +49,7 @@ class SingleVenue extends Component {
         axios.get(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/${this.props.match.params.venueId}`)
             .then(res => {
                 this.setState({ venue: res.data })
-            })
+            }) 
     }
 
     handleDelete = () => {
@@ -151,9 +150,9 @@ class SingleVenue extends Component {
                     </div>
                 }
                 {!this.state.isEditFormDisp ?
-                <MapContainerContainer>
-                    <MapContainer/>
-                </MapContainerContainer>
+                    <MapContainerContainer>
+                        <MapContainer />
+                    </MapContainerContainer>
                     : null}
             </VenueContent>
         )
@@ -161,7 +160,3 @@ class SingleVenue extends Component {
 }
 
 export default SingleVenue
-
-// export default GoogleApiWrapper({
-//     apiKey: ('AIzaSyA-G5uqUKbbLDZWR1GAf5-FjUaAZb-xgkc')
-// })(SingleVenue)

@@ -1,35 +1,61 @@
 import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY
-// console.log("Google Key: ", GOOGLE_MAP_API_KEY)
 
 const style = {
     width: '100vw',
-    height: '300px',
+    height: '350px',
     position: 'absolute',
     left: '0'
 }
 
 class MapContainer extends Component {
+
+    state = {
+        currentLocation: {
+            lat: 0,
+            lng: 0
+        }
+    }
+
+    onMarkerClick = () => {
+        console.log(this.state.currentLocation)
+    }
+
+    componentWillMount = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log(position.coords)
+                this.setState({
+                    currentLocation: {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    }
+                })
+            })
+
+        } else {
+            //browser doesn't support geolocation, set as Atlanta
+            this.setState({
+                currentLocation: {
+                    lat: 33.766358,
+                    lng: -84.380000
+                }
+            }
+            );
+        }
+    }
     render() {
+        console.log(this.state.currentLocation)
         return (
-            <Map google={this.props.google} 
-            style={style} 
-            initialCenter={{
-                lat: 33.766358,
-                lng: -84.383998
-            }}
-            zoom={14}>
-
+            <Map google={this.props.google}
+            style={style}
+            center={this.state.currentLocation}
+            zoom={15}>
                 <Marker onClick={this.onMarkerClick}
+                    postion={this.props.mapCenter}
                     name={'Current location'} />
-
-                <InfoWindow onClose={this.onInfoWindowClose}>
-                    {/* <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div> */}
-                </InfoWindow>
             </Map>
         );
     }
