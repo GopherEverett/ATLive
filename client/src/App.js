@@ -12,13 +12,13 @@ import img from './images/acoustic-acoustic-guitar-blur-808353.jpg'
 const Box = styled.div`
 background: rgba(24, 27, 25, 0.5);
 max-width: 100vw;
-margin: 30px 0;
+margin: 20vh 0;
 // border-top: 1px solid #f2833a;
 // border-bottom: 1px solid #f2833a;
 color: white;
 display: flex;
 justify-content: center;
-align-content: center;
+// align-items: center;
 
 `
 const Body = styled.div`
@@ -27,7 +27,7 @@ background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
 background-attachment: fixed;
-height: 150vh;
+height: 200vh;
 width: 100vw;
 display; flex;
 align-content: center;

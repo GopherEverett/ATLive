@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY
+// console.log(GOOGLE_MAP_API_KEY)
 
 const style = {
     width: '100vw',
-    height: '350px',
+    height: '400px',
     position: 'absolute',
     left: '0'
 }
@@ -13,17 +14,14 @@ const style = {
 class MapContainer extends Component {
 
     state = {
+        markerGo: false,
         currentLocation: {
-            lat: 0,
-            lng: 0
+            // lat: 0,
+            // lng: 0
         }
     }
 
-    onMarkerClick = () => {
-        console.log(this.state.currentLocation)
-    }
-
-    componentWillMount = () => {
+    componentDidMount = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
                 console.log(position.coords)
@@ -34,8 +32,11 @@ class MapContainer extends Component {
                     }
                 })
             })
-
-        } else {
+            this.setState({
+                markerGo: true
+            })
+        }
+        else {
             //browser doesn't support geolocation, set as Atlanta
             this.setState({
                 currentLocation: {
@@ -49,13 +50,20 @@ class MapContainer extends Component {
     render() {
         console.log(this.state.currentLocation)
         return (
+
             <Map google={this.props.google}
-            style={style}
-            center={this.state.currentLocation}
-            zoom={15}>
-                <Marker onClick={this.onMarkerClick}
-                    postion={this.props.mapCenter}
-                    name={'Current location'} />
+                style={style}
+                center={this.state.currentLocation}
+                zoom={15}>
+                {this.state.markerGo ?
+                    <Marker onClick={this.onMarkerClick}
+                        postion={this.state.currentLocation}
+                        name={'Current location'}>
+                        {console.log(this.state.currentLocation)}
+                    </Marker>
+
+                    : null
+                }
             </Map>
         );
     }
