@@ -81,7 +81,8 @@ export default class Hoods extends Component {
             <HoodContent>
                 <p>Neighborhoods</p>
                 {hoods}
-                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
+                {this.state.isAddFormDisp ? <ButtonStyle onClick={this.toggleAddForm}>Hide Form</ButtonStyle> :
+                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle> }
                 {this.state.isAddFormDisp
                     ?
                     <Form onSubmit={this.createHood}>

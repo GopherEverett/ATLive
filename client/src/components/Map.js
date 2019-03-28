@@ -8,7 +8,7 @@ Geocode.setApiKey(GOOGLE_MAP_API_KEY)
 //styling for map container
 const style = {
     width: '100vw',
-    height: '400px',
+    height: '450px',
     position: 'absolute',
     left: '0'
 }

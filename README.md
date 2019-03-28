@@ -64,3 +64,4 @@ ATLive is an online application that allows a user to choose from neighborhoods 
 
 - Add user authentication
 - Integrate additional Maps functionality
+- Add an upcoming events list for venue

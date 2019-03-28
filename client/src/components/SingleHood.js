@@ -113,7 +113,8 @@ export default class SingleHood extends Component {
                 <p>Venues in {this.state.hood.name}</p>
                 {venues}
                 <div className='buttons'>
-                    <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle>
+                    {this.state.isAddFormDisp ? <ButtonStyle onClick={this.toggleAddForm}>Hide Form</ButtonStyle> :
+                    <ButtonStyle onClick={this.toggleAddForm}>Add New Venue</ButtonStyle> }
                     <ButtonStyle onClick={this.handleDelete}>Delete Neighborhood</ButtonStyle>
                 </div>
                 {this.state.isAddFormDisp
