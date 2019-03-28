@@ -14,6 +14,12 @@ p {
     font-size: 3rem;
     font-family: 'Crushed', cursive;
 }
+a {
+    text-decoration: none;
+}
+.venName { 
+    font-size: 3.6rem;
+}
 @media (max-width: 50em) {
     p{
     font-size: 2rem;
@@ -50,7 +56,7 @@ class SingleVenue extends Component {
         axios.get(`/api/ATLive/hoods/${this.props.match.params.hoodId}/venues/${this.props.match.params.venueId}`)
             .then(res => {
                 this.setState({ venue: res.data })
-            }) 
+            })
     }
 
     handleDelete = () => {
@@ -93,7 +99,7 @@ class SingleVenue extends Component {
         }
         return (
             <VenueContent>
-                <p>{this.state.venue.name}</p>
+                <p className='venName'>{this.state.venue.name}</p>
                 <p>{this.state.venue.address}</p>
                 <a href={this.state.venue.website}><p>{this.state.venue.website}</p></a>
                 <p>{this.state.venue.phone}</p>
@@ -151,7 +157,7 @@ class SingleVenue extends Component {
                 }
                 {!this.state.isEditFormDisp ?  //hide map if edit form is shown
                     <MapContainerContainer>
-                        <MapContainer venue={this.state.venue.address}/>
+                        <MapContainer venue={this.state.venue.address} />
                     </MapContainerContainer>
                     : null}
             </VenueContent>

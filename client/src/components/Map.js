@@ -74,7 +74,6 @@ render() {
         center={this.state.currentLocation}
         onClick={this.onMapClick}
         zoom={15}>
-        {console.log(this.state.currentLocation)}
             {this.state.markerGo ?
                 <Marker onClick={this.onMarkerClick}
                     postion={this.state.currentLocation}
