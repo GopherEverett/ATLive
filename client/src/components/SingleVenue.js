@@ -6,13 +6,9 @@ import Form from './styledComponents/Form'
 import styled from 'styled-components'
 import MapContainer from './Map.js'
 
-
 const VenueContent = styled.div`
 text-align: center;
 text-shadow: 2px 2px 2px gray;
-// padding: 10px;
-// display: flex;
-
 p {
     color: orange;
     font-size: 3rem;
@@ -22,7 +18,12 @@ p {
     p{
     font-size: 2rem;
     }
-
+    .mapInfo{
+    font-size: 1.5rem;
+    }
+}
+.mapInfo {
+    font-size: 2.0rem;
 }
 `
 const MapContainerContainer = styled.div`
@@ -145,9 +146,10 @@ class SingleVenue extends Component {
                     <div>
                         <ButtonStyle onClick={this.handleDelete}>DELETE</ButtonStyle>
                         <ButtonStyle onClick={this.toggleEditForm}>EDIT</ButtonStyle>
+                        <p className='mapInfo'>Click on map to see location</p>
                     </div>
                 }
-                {!this.state.isEditFormDisp ?
+                {!this.state.isEditFormDisp ?  //hide map if edit form is shown
                     <MapContainerContainer>
                         <MapContainer venue={this.state.venue.address}/>
                     </MapContainerContainer>

@@ -5,7 +5,6 @@ color: orange;
 display: flex;
 justify-content: space-between;
 align-items: center;
-// border-bottom: 1px  solid #f2833a;
 background: black;
 max-width: 100vw;
 height: 70px;

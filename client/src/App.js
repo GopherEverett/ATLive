@@ -13,13 +13,9 @@ const Box = styled.div`
 background: rgba(24, 27, 25, 0.5);
 max-width: 100vw;
 margin: 20vh 0;
-// border-top: 1px solid #f2833a;
-// border-bottom: 1px solid #f2833a;
 color: white;
 display: flex;
 justify-content: center;
-// align-items: center;
-
 `
 const Body = styled.div`
 background-image: url(${img});
@@ -37,7 +33,7 @@ class App extends Component {
   state = {
     isUser: false
   }
-
+  //so link to hoods is disabled before login
   handleIsUser = () => {
     this.setState(({ isUser: true }))
   }

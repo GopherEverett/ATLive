@@ -47,7 +47,7 @@ export default class SingleHood extends Component {
     componentDidMount = () => {
         this.getAllVenues()
     }
-
+    //retrieve venues data from database
     getAllVenues = () => {
         axios.get(`/api/ATLive/hoods/${this.props.match.params.hoodId}`)
             .then(res => {
@@ -60,7 +60,7 @@ export default class SingleHood extends Component {
         copyNewVenue[evt.target.name] = evt.target.value
         this.setState({ newVenue: copyNewVenue })
     }
-
+    //create new vwnue in database
     createVenue = (evt) => {
         evt.preventDefault()
         const payload = {
@@ -151,16 +151,6 @@ export default class SingleHood extends Component {
                             onChange={this.handleChange}
                             value={this.state.newVenue.phone}
                         />
-                        {/* <div>
-                            <label htmlFor="name">Name</label>
-                            <input
-                                id='name'
-                                name='name'
-                                type='text'
-                                onChange={this.handleChange}
-                                value={this.state.newVenue.name}
-                            />
-                        </div> */}
                         <ButtonStyle>Create</ButtonStyle>
                     </Form>
                     : null

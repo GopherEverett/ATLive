@@ -32,13 +32,14 @@ export default class Hoods extends Component {
         },
         isAddFormDisp: false,
     }
-
+    //retrieve neighborhood data
     componentDidMount = () => {
         axios.get('/api/ATLive/hoods')
             .then(res => {
                 this.setState({ hoods: res.data })
             })
     }
+    //toggles form to add a neighborhood
     toggleAddForm = () => {
         this.setState((state, props) => {
             return ({ isAddFormDisp: !state.isAddFormDisp })
@@ -49,7 +50,7 @@ export default class Hoods extends Component {
         copyNewHood[evt.target.name] = evt.target.value
         this.setState({ newHood: copyNewHood })
     }
-
+    //creates new neighborhood in database
     createHood = (evt) => {
         evt.preventDefault()
         axios.post('/api/ATLive/hoods', {
@@ -77,26 +78,26 @@ export default class Hoods extends Component {
         })
 
         return (
-                <HoodContent>
-                    <p>Neighborhoods</p>
-                    {hoods}
-                    <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
-                    {this.state.isAddFormDisp
-                        ?
-                        <Form onSubmit={this.createHood}>
-                            <div>
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    id='name' name='name' type='text'
-                                    onChange={this.handleChange}
-                                    value={this.state.newHood.name}
-                                />
-                            </div>
-                            <ButtonStyle>Create</ButtonStyle>
-                        </Form>
-                        : null
-                    }
-                </HoodContent>
+            <HoodContent>
+                <p>Neighborhoods</p>
+                {hoods}
+                <ButtonStyle onClick={this.toggleAddForm}>Add New Neighborhood</ButtonStyle>
+                {this.state.isAddFormDisp
+                    ?
+                    <Form onSubmit={this.createHood}>
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <input
+                                id='name' name='name' type='text'
+                                onChange={this.handleChange}
+                                value={this.state.newHood.name}
+                            />
+                        </div>
+                        <ButtonStyle>Create</ButtonStyle>
+                    </Form>
+                    : null
+                }
+            </HoodContent>
         )
     }
 }

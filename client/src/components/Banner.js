@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import logo from '../images/apple-icon-76x76.png'
 import BannerStyle from './styledComponents/BannerStyle'
 
-
-
 export default class Banner extends Component {
     render() {
         return (

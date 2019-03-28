@@ -16,7 +16,7 @@ export default class Login extends Component {
         password: "",
         reDirectHoods: false,
     }
-
+    
     validateForm() {
         return this.state.email.length > 0 && this.state.password.length > 0;
     }
@@ -30,7 +30,6 @@ export default class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.setState({ reDirectHoods: true })
-        console.log(this.props.handleIsUser)
         this.props.handleIsUser()
     }
 

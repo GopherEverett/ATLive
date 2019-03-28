@@ -16,6 +16,7 @@ ATLive is an online application that allows a user to choose from neighborhoods 
 - Node.js with Express 
 - MongoDB with Mongoose for database management
 - React.js
+- Google Maps API
 
 ### Features
 
@@ -25,6 +26,7 @@ ATLive is an online application that allows a user to choose from neighborhoods 
 - Add a new music venue in a neighborhood
 - Edit the information about a venue
 - Delete a venue
+- Map showing current location and location of venue
 
 ### Wireframes
 #### User Login
@@ -60,6 +62,5 @@ ATLive is an online application that allows a user to choose from neighborhoods 
 
 ### Future Development
 
-- Add user Authentication
-- Integrate Maps functionality
-- 
+- Add user authentication
+- Integrate additional Maps functionality

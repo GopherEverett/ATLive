@@ -13,12 +13,10 @@ const venueController = {
             .then((hood) => {
                 Venue.create(req.body)
                     .then(venue => {
-                        hood.venues.push(venue)
+                        hood.venues.push(venue) //add to hoods venue array
                         hood.save()
                         res.json(hood)
                     })
-                    // .then(hood => {
-                    // })
                     .catch((err) => {
                         console.log(err)
                     })

@@ -2,19 +2,16 @@ import React, { Component } from 'react'
 import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Geocode from "react-geocode";
 
-
 const GOOGLE_MAP_API_KEY = process.env.REACT_APP_GOOGLE_MAP_KEY
 
 Geocode.setApiKey(GOOGLE_MAP_API_KEY)
-
+//styling for map container
 const style = {
     width: '100vw',
     height: '400px',
     position: 'absolute',
     left: '0'
 }
-
-
 
 class MapContainer extends Component {
     
@@ -25,13 +22,12 @@ class MapContainer extends Component {
             lng: -84.410121
         }
     }
-    
+    //keeps market from rendering until click on map
     toggleMarkerGo = () => {
         this.setState(({ markerGo: true }))
     }
-    
-    onMarkerClick = () => {
-        console.log(this.props)
+    //on map click get address lat and long to state
+    onMapClick = () => {
         Geocode.fromAddress(this.props.venue)
         .then(response => { this.setState({
                     markerGo: false,
@@ -71,16 +67,14 @@ class MapContainer extends Component {
         }
     }
 
-   
-
 render() {
     return (
-
         <Map google={this.props.google}
-            style={style}
-            center={this.state.currentLocation}
-            onClick={this.toggleMarkerGo}
-            zoom={15}>
+        style={style}
+        center={this.state.currentLocation}
+        onClick={this.onMapClick}
+        zoom={15}>
+        {console.log(this.state.currentLocation)}
             {this.state.markerGo ?
                 <Marker onClick={this.onMarkerClick}
                     postion={this.state.currentLocation}
