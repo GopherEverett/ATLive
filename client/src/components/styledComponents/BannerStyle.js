@@ -17,7 +17,14 @@ p{
 }
 }
 img{
-  padding: 10px;
+  padding: 2rem;
+  opacity: 0.9;
+  transition: all .2s ease-in-out;
+  display: block;
+}
+img:hover {
+  transform: scale(1.1);
+  opacity: 1;
 }
 @media (max-width: 50em) {
   .atlInfo {
