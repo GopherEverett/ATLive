@@ -11,6 +11,9 @@ mongoose.connect(connectionString, {
     .then(() => {
         console.log("connected to mongo at: " + connectionString);
     })
+    .catch((err) => {
+        console.log(err)
+    })
 // mongoose.connection.on('error', function (err) {
 //     console.error(`MongoDB connection error: ${err}`);
 //     process.exit(-1);
